@@ -45,6 +45,14 @@ Luego abrir http://localhost:8777
 6. **Dominio.** Sustituir `https://www.notarialledoyseda.es/` en las etiquetas `canonical` y
    `og:url` de `index.html` por el dominio definitivo.
 
+## Vista previa publicada
+
+https://msampedrogkvc.github.io/notaria-lledo-seda/
+
+Es un **borrador** para que los notarios lo revisen. Lleva `noindex, nofollow` en `index.html`
+para que no aparezca en Google mientras esté pendiente de aprobación; hay que quitarlo al pasar
+al dominio definitivo.
+
 ## Publicación
 
 Al no haber build ni backend, sirve cualquier alojamiento estático: subir la carpeta por FTP al
