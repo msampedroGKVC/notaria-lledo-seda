@@ -270,8 +270,17 @@ p{margin:0 0 1.1em}
 .notary .link-arrow{margin-top:auto; align-self:flex-start; font-size:.88rem}
 
 /* ---------- Servicios ---------- */
-.services{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); border:1px solid var(--line)}
-.svc{background:var(--white); padding:38px 32px; transition:background .3s var(--ease)}
+.services{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line); border-left:1px solid var(--line);
+}
+/* Las separaciones van en cada tarjeta, no en el hueco de la rejilla: asi una
+   ultima fila incompleta queda en blanco en vez de mostrar un bloque de color. */
+.svc{
+  background:var(--white); padding:38px 32px;
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  transition:background .3s var(--ease);
+}
 .svc:hover{background:var(--cream)}
 .svc__ico{display:block; color:var(--gold); margin-bottom:18px}
 .svc__ico svg{width:32px; height:32px}

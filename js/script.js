@@ -16,7 +16,7 @@
      var FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
      ------------------------------------------------------- */
   var FORM_ENDPOINT = '';
-  var FORM_MAILTO   = 'jlledo@correonotarial.org';
+  var FORM_MAILTO   = 'jlledo@despacho.notariado.org';
 
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };

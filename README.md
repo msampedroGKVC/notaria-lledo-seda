@@ -25,11 +25,11 @@ Luego abrir http://localhost:8777
 
 ## ⚠️ Pendiente antes de publicar
 
-1. **Verificar los datos.** Dirección, teléfono, fax, correos y horario se han recopilado de
-   directorios públicos (notarias.info, notariosen.com, Páginas Amarillas). Las fuentes discrepan
-   entre la **4.ª y la 5.ª planta**: se ha optado por la 4.ª por ser la mayoritaria. Confirmar con
-   el despacho.
-2. **Revisar las biografías** de los dos notarios con ellos mismos antes de publicarlas.
+1. ~~Verificar los datos de contacto.~~ **Hecho.** Confirmados en la revisión del despacho de
+   septiembre de 2026: Calle Tetuán 33, **4.ª planta**, teléfono 954 21 81 40 y fax 954 21 38 72.
+   Correo de Lledó: `jlledo@despacho.notariado.org`; el de Seda sigue siendo
+   `maseda@correonotarial.org` (confirmado como intencionado).
+2. ~~Revisar las biografías.~~ **Hecho** en esa misma revisión.
 3. **Fotografías.** Los retratos incluidos en `img/` proceden de fuentes públicas:
    - `jose-luis-lledo.jpg` — publicada por Lawyerpress (febrero de 2021), 600×400 px.
    - `manuel-seda.jpg` — publicada por el Colegio Notarial de Andalucía, reducida de 6192×4128 a
