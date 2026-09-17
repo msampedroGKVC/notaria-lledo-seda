@@ -30,9 +30,6 @@
 <meta property="og:url" content="https://www.notarialledoyseda.es/">
 
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 
 <script type="application/ld+json">
@@ -595,7 +592,6 @@
             <div>
               <h3>Correo electrónico</h3>
               <p>
-                <a href="mailto:jlledo@despacho.notariado.org">jlledo@despacho.notariado.org</a><br>
                 <a href="mailto:maseda@correonotarial.org">maseda@correonotarial.org</a>
               </p>
             </div>
@@ -670,11 +666,21 @@
       </div>
     </div>
 
-    <div class="map reveal">
+    <div class="map reveal" id="mapBox">
+      <!-- El iframe de Google Maps no se carga hasta que el visitante acepta las
+           cookies (ver banner al final de la página y js/script.js). Sin
+           consentimiento se muestra el aviso de abajo en su lugar. -->
       <iframe
+        id="mapFrame"
         title="Mapa de situación de la Notaría Lledó y Seda, Calle Tetuán 33, Sevilla"
-        src="https://www.google.com/maps?q=Calle%20Tetu%C3%A1n%2033%2C%2041001%20Sevilla&output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        data-src="https://www.google.com/maps?q=Calle%20Tetu%C3%A1n%2033%2C%2041001%20Sevilla&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+      <div class="map__consent" id="mapConsent">
+        <p>Para mostrar este mapa es necesario cargar un servicio de Google Maps, que puede
+          establecer cookies en su navegador.</p>
+        <button type="button" class="btn btn--gold" id="mapConsentAccept">Aceptar y mostrar el mapa</button>
+        <a class="link-arrow" href="https://maps.google.com/?q=Calle+Tetu%C3%A1n+33,+41001+Sevilla" target="_blank" rel="noopener">O ábralo directamente en Google Maps</a>
+      </div>
     </div>
   </div>
 </section>
@@ -711,7 +717,6 @@
       <ul>
         <li>Calle Tetuán 33, 4.ª planta<br>41001 Sevilla</li>
         <li><a href="tel:+34954218140">954 21 81 40</a></li>
-        <li><a href="mailto:jlledo@despacho.notariado.org">jlledo@despacho.notariado.org</a></li>
       </ul>
     </div>
 
@@ -731,9 +736,24 @@
       <li><a href="aviso-legal.html">Aviso legal</a></li>
       <li><a href="privacidad.html">Política de privacidad</a></li>
       <li><a href="privacidad.html#cookies">Cookies</a></li>
+      <li><button type="button" class="link-as-text" id="cookiePrefsBtn">Preferencias de cookies</button></li>
     </ul>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Preferencias de cookies" aria-live="polite" hidden>
+  <div class="cookie-banner__inner">
+    <p>
+      Usamos únicamente las cookies de Google Maps para mostrar el mapa de situación de la notaría,
+      y solo si usted lo acepta. No usamos cookies de analítica ni de publicidad.
+      Puede leer más en la <a href="privacidad.html#cookies">política de cookies</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn btn--ghost" id="cookieReject">Rechazar</button>
+      <button type="button" class="btn btn--gold" id="cookieAccept">Aceptar</button>
+    </div>
+  </div>
+</div>
 
 <a class="fab" href="tel:+34954218140" aria-label="Llamar a la notaría">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2z"/></svg>

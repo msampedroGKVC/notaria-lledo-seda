@@ -16,7 +16,7 @@
      var FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
      ------------------------------------------------------- */
   var FORM_ENDPOINT = '';
-  var FORM_MAILTO   = 'jlledo@despacho.notariado.org';
+  var FORM_MAILTO   = 'mgjimenez-castellanos@despacho.notariado.org';
 
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -143,6 +143,65 @@
       });
     });
   });
+
+  /* ---------- Cookies: mapa de Google Maps bajo consentimiento ----------
+     Único servicio de terceros que puede establecer cookies en esta web.
+     La elección se guarda en localStorage (no en una cookie) y se respeta
+     en visitas sucesivas; el visitante puede cambiarla cuando quiera desde
+     "Preferencias de cookies", en el pie de página. ------------------- */
+  var CONSENT_KEY = 'notaria_cookie_consent'; // 'accepted' | 'rejected'
+
+  var banner   = $('#cookieBanner');
+  var mapFrame = $('#mapFrame');
+  var mapConsentBox = $('#mapConsent');
+
+  var loadMap = function () {
+    if (mapFrame && !mapFrame.src && mapFrame.dataset.src) {
+      mapFrame.src = mapFrame.dataset.src;
+    }
+    if (mapFrame) mapFrame.hidden = false;
+    if (mapConsentBox) mapConsentBox.hidden = true;
+  };
+
+  var showMapNotice = function () {
+    if (mapFrame) mapFrame.hidden = true;
+    if (mapConsentBox) mapConsentBox.hidden = false;
+  };
+
+  var getConsent = function () {
+    try { return window.localStorage.getItem(CONSENT_KEY); }
+    catch (e) { return null; }
+  };
+  var setConsent = function (value) {
+    try { window.localStorage.setItem(CONSENT_KEY, value); }
+    catch (e) { /* localStorage no disponible: se volverá a preguntar en la próxima visita */ }
+  };
+
+  var applyConsent = function (value) {
+    setConsent(value);
+    if (value === 'accepted') loadMap(); else showMapNotice();
+    if (banner) banner.hidden = true;
+  };
+
+  var openBanner = function () {
+    if (banner) banner.hidden = false;
+  };
+
+  if (mapFrame) {
+    var stored = getConsent();
+    if (stored === 'accepted') loadMap();
+    else { showMapNotice(); if (stored !== 'rejected') openBanner(); }
+
+    var acceptBtn = $('#cookieAccept');
+    var rejectBtn = $('#cookieReject');
+    var mapAcceptBtn = $('#mapConsentAccept');
+    if (acceptBtn) acceptBtn.addEventListener('click', function () { applyConsent('accepted'); });
+    if (rejectBtn) rejectBtn.addEventListener('click', function () { applyConsent('rejected'); });
+    if (mapAcceptBtn) mapAcceptBtn.addEventListener('click', function () { applyConsent('accepted'); });
+
+    var prefsBtn = $('#cookiePrefsBtn');
+    if (prefsBtn) prefsBtn.addEventListener('click', openBanner);
+  }
 
   /* ---------- Formulario de contacto ---------- */
   var form = $('#form');
